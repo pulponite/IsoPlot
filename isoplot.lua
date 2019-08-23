@@ -83,14 +83,6 @@ local function vec_len(v)
     return math.sqrt((v[1] ^ 2) + (v[2] ^ 2) + ((v[3] or 0) ^ 2))
 end
 
-local function norlize_vec(v)
-    local length = vec_len(v)
-    return {
-        v[1] / length,
-        v[2] / length
-    }
-end
-
 local function vec_dot(v1, v2)
     return (v1[1] * v2[1]) + (v1[2] * v2[2]) + ((v1[3] or 0) * (v2[3] or 0))
 end
@@ -212,7 +204,7 @@ dlg
     :separator{text="Object Creation Settings"}
     :slider{id="rotation", label="Rotation:", min=0, max=89, value=45}
     :slider{id="right", label="Left:", min=0, max=app.activeSprite.width / 2, value=7}
-    :slider{id="bottom", label="Top:", min=0, max=app.activeSprite.height, value=7}
+    :slider{id="bottom", label="Top:", min=0, max=app.activeSprite.height / 2, value=7}
     :separator()
     :button{text="Make Shape",onclick=function() make_shape() end}
     :show{wait=false}
